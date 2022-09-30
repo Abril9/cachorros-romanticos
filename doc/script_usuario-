@@ -1,0 +1,2 @@
+CREATE USER abril WITH PASSWORD 'password';
+GRANT CONNECT ON DATABASE perrosromanticos_db TO abril;

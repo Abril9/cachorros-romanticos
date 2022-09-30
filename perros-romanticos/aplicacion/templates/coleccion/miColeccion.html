@@ -1,0 +1,38 @@
+{% extends 'base.html' %} <!--esto quiere decir que vamos a usar la plantilla basehmlt-->
+{% block titulo %} Mi coleccion {% endblock %}
+{% block contenido %} 
+<h1>  Mi coleccion </h1>
+<style>
+.simagen{
+  width: 20rem;
+  height:20rem;
+
+}
+</style>
+
+
+<div align="center">
+  <br>
+  <h5>Aca puedes visualizar los objetos que adquiriste</h5> 
+  <img class="sline" src="/imagenes/imagenes/line.png" >
+  <br>
+</div>
+<div> 
+  <br>
+  
+
+  {% for imagen in imagenes %}
+  <!--   <label for="" class="form-label"> {{ campo }} </label>--> 
+
+    <a name="" id=""  href="{% url 'verObjetoArtistico' 'imagen.id' %}" role="button"> 
+      <img class='simagen' src="{{ imagen.img.url }}" height="45px" width="45 px">
+
+   </a>
+  {% endfor %}
+</div>
+
+
+
+<p> Hacé click por <a href="/"> volver a inicio </a> </p>
+  
+{% endblock %}

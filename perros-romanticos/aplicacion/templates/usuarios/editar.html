@@ -1,0 +1,18 @@
+{% extends 'base.html' %} <!--esto quiere decir que vamos a usar la plantilla basehmlt-->
+{% block titulo %} Editar usuario {% endblock %}
+{% block contenido %} 
+
+<div class="card">
+    <div class="card-header">
+        Editar mi perfil de usuario
+    </div>
+    <div class="card-body">
+        {% include 'form_usuario.html' %}
+        
+    </div>
+    <div class="card-footer text-muted">
+        Footer ?? que pongo
+    </div>
+</div>
+
+{% endblock %}

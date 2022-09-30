@@ -1,0 +1,117 @@
+{% load static %}
+
+<!-- 
+para que podamos leer la infromacion django utiliza una llave o token que identifica 
+que el formulario vino de la misma aplicacion. Es la llave que le dice a django que le pertenece
+a este proyecto el formulario
+
+formulario es el objeto que me estan eviando a traves de la vista 
+-->
+<!doctype html>
+<html lang="en">
+
+<head>
+
+    <title>Perros Romanticos</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv=«Content-Type» content=«text / html; charset=utf-8»>
+    <meta name=«description» content=« sitio web de los perror románticos»>
+    <meta name=«keywords» content=«art, freeart, music, digital-art»>
+    <link rel=«icono de acceso directo» href=«/ favicon.ico»>
+
+
+    <!-- Bootstrap CSS v5.2.0-beta1 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+        <style>
+            .card {
+                box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+                transition: 0.3s;
+                width: 50%;
+                padding: 20px;
+            }
+    
+            .card:hover {
+                box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+            }
+    
+            .col-12{
+                padding: 2px 16px;
+            }
+        </style>
+</head>
+
+<body>
+    
+
+
+<form enctype="multipart/form-data" method="post">
+    {% csrf_token %}
+
+    <div class="card">
+        <div class="card-header">
+            <!-- teclado -->
+            <h4>Bienvenide!</h4>
+            <h5>{% block titulo %} {% endblock %} </h5>
+        </div>
+        <div class="card-body">
+            <div class="mb-3">
+                {% for campo in formulario %}
+                <label for="" class="form-label"> {{ campo.label }} </label>
+                <input type="{{ campo.field.widget.input_type }}" class="form-control" name="{{ campo.name }}" id=""
+                    aria-describedby="helpId" placeholder="Ingrese su {{ campo.label.lower }} ">
+           
+            <div class="col-12 help-text">
+                {{campo.errors}}
+            </div>
+            {% endfor %}
+            <!-- <div class="row">
+                        <div class="col-12">
+                            <label for="" class="form-label"> Apellido </label>
+                            <input type="text" class="form-control" name="" id="" aria-describedby="helpId"
+                                placeholder="Ingrese su apellido">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <label for="" class="form-label"> Pronombres </label>
+                            <input type="text" class="form-control" name="" id="" aria-describedby="helpId"
+                                placeholder="Ingrese los pronombres que prefiere">
+                        </div>
+                    </div>                
+                    <div class="row">
+                        <div class="col-12">
+                            <label for="" class="form-label"> Usuario </label>
+                            <input type="text" class="form-control" name="" id="" aria-describedby="helpId"
+                                placeholder="Ingrese un nombre de usuario">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <label for="" class="form-label">Email </label>
+                            <input type="text" class="form-control" name="" id="" aria-describedby="helpId"
+                                placeholder="Ingrese su email">
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <label for="" class="form-label">Pais </label>
+                            <select class="form-control" name="" id="">
+                                <option>Argentina</option>
+                                <option>Uruguay</option>
+                                <option>Chile</option>
+                            </select>
+                    
+                    </div> -->
+            </div>
+            <div class="card-footer text-muted">
+                <input name="" id="" class="btn btn-primary" type="submit" value="{% block label_boton %} {% endblock %}">
+            </div>
+        </div>
+    </div>
+
+</form>
+</body>
+
+</html>

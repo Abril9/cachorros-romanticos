@@ -1,0 +1,27 @@
+-- Database: perrosromanticos_db
+
+-- DROP DATABASE IF EXISTS perrosromanticos_db;
+
+CREATE DATABASE perrosromanticos_db
+    WITH
+    OWNER = postgres
+    ENCODING = 'UTF8'
+    LC_COLLATE = 'es_AR.UTF-8'
+    LC_CTYPE = 'es_AR.UTF-8'
+    TABLESPACE = pg_default
+    CONNECTION LIMIT = -1;
+    
+CREATE SEQUENCE sq_id_usuario
+    INCREMENT 1
+    MINVALUE 1
+    MAXVALUE 9223372036854775807
+    START 1
+    CACHE 1;
+
+
+CREATE TABLE usuario(
+    id_usuario     integer   NOT NULL DEFAULT nextval('sq_id_usuario'::regclass),
+    fecha_alta          timestamp NOT NULL,
+    observacion         varchar(200),
+    CONSTRAINT pk_id_usuario PRIMARY KEY ("id_usuario")
+);

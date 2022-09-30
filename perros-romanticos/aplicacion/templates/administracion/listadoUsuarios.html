@@ -1,0 +1,47 @@
+{% extends 'base.html' %} <!--esto quiere decir que vamos a usar la plantilla basehmlt-->
+{% block titulo %}Lista de Usuarios {% endblock %}
+{% block contenido %} 
+
+
+<div class="card">
+<div class="card-header">
+    </div>
+    <div class="card-body">
+        <h4 class="card-title">Usuarios</h4>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Imagen</th>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Usuario</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for usr in cUsuarios %}
+                <tr>
+                    <td> {{ usr.id }}</td>
+                    
+                    <td> 
+                        <img src="{{ usr.imagen.url }}" height="45px" width="45 px">
+                    </td>
+                    <td> {{ usr.nombre }} </td>
+                    <td> {{ usr.apellido }}</td>
+                    <td> {{ usr.usuario }}</td>
+                    <th>      <a name="" id="" class="btn btn-primary" href="{% url 'editarUsuario' %}" role="button"> .. Editar</a></th>
+                </tr>
+                {% endfor %}
+                <tr>
+                    <td scope="row"></td>
+                </tr>
+            </tbody>
+        </table>
+        
+    </div>
+    <div class="card-footer text-muted">
+        <a name="" id="" class="btn btn-primary" href="{% url 'crearUsuario' %}" role="button"> +Agregar</a>
+    </div>
+</div>
+
+{% endblock %}
